@@ -1,0 +1,356 @@
+.calc {
+  background-color: lightgrey;
+  border: 5px outset darkgrey;
+  padding: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
+  width: clamp(200px, 20%, 400px);
+}
+
+.calc span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: clamp(15px, 4vh, 3rem);
+  font-size: clamp(12px, 1.3vw, 2vw);
+  height: clamp(30px, 5vh, 60px);
+}
+
+.calc span output {
+  border: 4px inset #b90b28;
+  padding: 2px;
+  width: 60%;
+  background-color: white;
+  font-weight: bold;
+  border-radius: 0%;
+  text-align: center;
+  font-size: inherit;
+}
+
+.calc span button {
+  background-color: #b90b28;
+  color: black;
+  text-shadow: 1px 1px 1px black;
+  width: clamp(40px, 5vw, 6vw);
+  border: 3px outset #b90b28;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  padding: 2px;
+  font-size: inherit;
+}
+
+.calc span button:hover {
+  background-color: darkred;
+  color: white;
+  border: 3px inset darkred;
+}
+
+.calc .buttonsGrid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 2vw;
+  -webkit-column-gap: 2vw;
+          column-gap: 2vw;
+  justify-items: center;
+}
+
+.calc .buttonsGrid button {
+  color: black;
+  text-shadow: 1px 1px 1px black;
+  background-color: grey;
+  border: 3px outset darkgrey;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  font-size: clamp(12px, 1vw, 2vw);
+  height: clamp(30px, 3vw, 80px);
+  width: clamp(30px, 3vw, 80px);
+}
+
+.calc .buttonsGrid button:hover {
+  background-color: dimgray;
+  color: white;
+  border: 3px inset dimgray;
+}
+
+.in {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 4px inset darkgrey;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  width: 97%;
+  height: clamp(20px, 4vh, 5vh);
+  background: white;
+  padding: 2px;
+  font-size: clamp(14px, 1.3vw, 2vw);
+  font-weight: bold;
+  margin-bottom: clamp(15px, 3vh, 4vh);
+}
+
+.in:focus {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+ 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+ sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+ monospace;
+}
+
+.wrapper {
+  margin: 8vh auto;
+  width: 600px;
+}
+
+.container input:hover ~ span, .container input:checked:hover ~ span {
+  background-color: #b65757;
+  border: 2px solid darkred;
+  -webkit-box-shadow: 0px 0px 3px darkred;
+          box-shadow: 0px 0px 3px darkred;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 2rem;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container input:checked ~ span {
+  background-color: darkred;
+}
+
+.container input:checked ~ span:after {
+  display: block;
+}
+
+.container span {
+  position: absolute;
+  left: 0;
+  border-radius: 20%;
+  height: 2vh;
+  width: 2vh;
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid darkred;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+.container span:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container span:after {
+  left: 0.15vw;
+  height: 1vh;
+  width: 1vh;
+  border: solid white;
+  border-width: 0 0.4vh 0.4vh 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.rm {
+  background: darkred;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.rm:hover {
+  background-color: #b65757;
+  border: 1px solid darkred;
+  -webkit-box-shadow: 0px 0px 3px darkred;
+          box-shadow: 0px 0px 3px darkred;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 32px solid darkred;
+  border-color: darkred transparent darkred transparent;
+  -webkit-animation: lds-hourglass 1.2s infinite;
+          animation: lds-hourglass 1.2s infinite;
+}
+
+@-webkit-keyframes lds-hourglass {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    -webkit-transform: rotate(900deg);
+            transform: rotate(900deg);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    -webkit-transform: rotate(1800deg);
+            transform: rotate(1800deg);
+  }
+}
+
+@keyframes lds-hourglass {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    -webkit-transform: rotate(900deg);
+            transform: rotate(900deg);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    -webkit-transform: rotate(1800deg);
+            transform: rotate(1800deg);
+  }
+}
+
+.f {
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 22px;
+}
+
+.inp {
+  border: 2px solid darkred;
+  border-radius: 0%;
+  text-align: center;
+  font-size: inherit;
+}
+
+.inp:focus {
+  outline: none;
+  border: 4px solid darkred;
+  font-size: 24px;
+}
+
+.inp:focus ~ .but {
+  border: 4px solid darkred;
+  font-size: 24px;
+}
+
+.inp:focus ~ .but:hover {
+  border: 4px solid #b65757;
+}
+
+.but {
+  border: 2px solid darkred;
+  border-radius: 0%;
+  font-size: inherit;
+  background: darkred;
+  color: white;
+  cursor: pointer;
+}
+
+.but:hover {
+  background: #b65757;
+  border: 2px solid #b65757;
+}
+
+.appButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: clamp(50px, 9vh, 250px);
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-size: clamp(18px, 2.6vh, 50px);
+}
+
+.calcAppButton {
+  width: clamp(170px, 9vw, 500px);
+  background-color: #159115;
+  border: 0.6vh outset #0e5a0e;
+  font-size: inherit;
+  transition: 0.2s;
+}
+
+.calcAppButton:hover {
+  background-color: #186418;
+  border: 0.6vh inset #0e5a0e;
+  color: white;
+}
+
+.toDoListAppButton {
+  width: clamp(170px, 9vw, 500px);
+  background-color: #ac791c;
+  border: 0.6vh outset #756002;
+  font-size: inherit;
+  transition: 0.2s;
+}
+
+.toDoListAppButton:hover {
+  background-color: #835f12;
+  border: 0.6vh inset #756002;
+  color: white;
+}
+/*# sourceMappingURL=style.css.map */

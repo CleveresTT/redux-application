@@ -1,0 +1,32 @@
+@import 'calculatorStyles';
+@import 'toDoListStyles';
+
+@mixin appButtons($first-color, $second-color, $thirth-color){
+    width: clamp(170px, 9vw, 500px);
+    background-color: $second-color;
+    border: 0.6vh outset $first-color;
+    transition: 0.2s;
+    font-size: inherit;
+    &:hover{
+        background-color: $thirth-color;
+        border: 0.6vh inset $first-color; 
+        color: white;
+    }
+}
+
+.appButtons{
+    display: flex;
+    justify-content: center;
+    height: clamp(50px, 9vh, 250px);
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-size: clamp(18px, 2.6vh, 50px);
+}
+
+.calcAppButton{
+    @include appButtons(rgb(14, 90, 14), rgb(21, 145, 21), rgb(24, 100, 24))
+}
+
+.toDoListAppButton{
+    @include appButtons(rgb(117, 96, 2), rgb(172, 121, 28), rgb(131, 95, 18))
+}
