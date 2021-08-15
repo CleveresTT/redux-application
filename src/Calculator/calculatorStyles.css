@@ -1,0 +1,103 @@
+.calc {
+  background-color: lightgrey;
+  border: 5px outset darkgrey;
+  padding: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8vh;
+  margin-bottom: 8vh;
+  width: clamp(200px, 20%, 400px);
+}
+
+.calc span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: clamp(15px, 4vh, 3rem);
+  font-size: clamp(12px, 1.3vw, 2vw);
+  height: clamp(30px, 5vh, 60px);
+}
+
+.calc span output {
+  border: 4px inset #b90b28;
+  padding: 2px;
+  width: 60%;
+  background-color: white;
+  font-weight: bold;
+  border-radius: 0%;
+  text-align: center;
+  font-size: inherit;
+}
+
+.calc span button {
+  background-color: #b90b28;
+  color: black;
+  text-shadow: 1px 1px 1px black;
+  width: clamp(40px, 5vw, 6vw);
+  border: 3px outset #b90b28;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  padding: 2px;
+  font-size: inherit;
+}
+
+.calc span button:hover {
+  background-color: darkred;
+  color: white;
+  border: 3px inset darkred;
+}
+
+.calc .buttonsGrid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 2vw;
+  -webkit-column-gap: 2vw;
+          column-gap: 2vw;
+  justify-items: center;
+}
+
+.calc .buttonsGrid button {
+  color: black;
+  text-shadow: 1px 1px 1px black;
+  background-color: grey;
+  border: 3px outset darkgrey;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  font-size: clamp(12px, 1vw, 2vw);
+  height: clamp(30px, 3vw, 80px);
+  width: clamp(30px, 3vw, 80px);
+}
+
+.calc .buttonsGrid button:hover {
+  background-color: dimgray;
+  color: white;
+  border: 3px inset dimgray;
+}
+
+.in {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 4px inset darkgrey;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  width: 97%;
+  height: clamp(20px, 4vh, 5vh);
+  background: white;
+  padding: 2px;
+  font-size: clamp(14px, 1.3vw, 2vw);
+  font-weight: bold;
+  margin-bottom: clamp(15px, 3vh, 4vh);
+}
+
+.in:focus {
+  outline: none;
+}
+/*# sourceMappingURL=calculatorStyles.css.map */

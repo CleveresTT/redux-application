@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react'
-import ToDoList from './Todo/ToDoList'
-import Context from './context'
-import Loader from './Loader'
+import ToDoList from './ToDoList'
+import Context from '../context'
+import Loader from '../Loader'
 import { connect } from 'react-redux'
 
-const AddToDo = React.lazy(() => new Promise(resolve => {setTimeout(() => {resolve(import('./Todo/AddToDo'))},0)}))
+const AddToDo = React.lazy(() => new Promise(resolve => {setTimeout(() => {resolve(import('./AddToDo'))},0)}))
 
 function ToDoListApp({toDoListState}) {
 

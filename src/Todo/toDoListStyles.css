@@ -1,0 +1,209 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.wrapper {
+  margin: 8vh auto;
+  width: 600px;
+}
+
+.container input:hover ~ span, .container input:checked:hover ~ span {
+  background-color: #b65757;
+  border: 2px solid darkred;
+  -webkit-box-shadow: 0px 0px 3px darkred;
+          box-shadow: 0px 0px 3px darkred;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 2rem;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container input:checked ~ span {
+  background-color: darkred;
+}
+
+.container input:checked ~ span:after {
+  display: block;
+}
+
+.container span {
+  position: absolute;
+  left: 0;
+  border-radius: 20%;
+  height: 2vh;
+  width: 2vh;
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid darkred;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+.container span:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container span:after {
+  left: 0.15vw;
+  height: 1vh;
+  width: 1vh;
+  border: solid white;
+  border-width: 0 0.4vh 0.4vh 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.rm {
+  background: darkred;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  border: 1px solid rgba(255, 255, 255, 0);
+}
+
+.rm:hover {
+  background-color: #b65757;
+  border: 1px solid darkred;
+  -webkit-box-shadow: 0px 0px 3px darkred;
+          box-shadow: 0px 0px 3px darkred;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.lds-hourglass {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 32px solid darkred;
+  border-color: darkred transparent darkred transparent;
+  -webkit-animation: lds-hourglass 1.2s infinite;
+          animation: lds-hourglass 1.2s infinite;
+}
+
+@-webkit-keyframes lds-hourglass {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    -webkit-transform: rotate(900deg);
+            transform: rotate(900deg);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    -webkit-transform: rotate(1800deg);
+            transform: rotate(1800deg);
+  }
+}
+
+@keyframes lds-hourglass {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    -webkit-transform: rotate(900deg);
+            transform: rotate(900deg);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    -webkit-transform: rotate(1800deg);
+            transform: rotate(1800deg);
+  }
+}
+
+.f {
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 22px;
+}
+
+.inp {
+  border: 2px solid darkred;
+  border-radius: 0%;
+  text-align: center;
+  font-size: inherit;
+}
+
+.inp:focus {
+  outline: none;
+  border: 4px solid darkred;
+  font-size: 24px;
+}
+
+.inp:focus ~ .but {
+  border: 4px solid darkred;
+  font-size: 24px;
+}
+
+.inp:focus ~ .but:hover {
+  border: 4px solid #b65757;
+}
+
+.but {
+  border: 2px solid darkred;
+  border-radius: 0%;
+  font-size: inherit;
+  background: darkred;
+  color: white;
+  cursor: pointer;
+}
+
+.but:hover {
+  background: #b65757;
+  border: 2px solid #b65757;
+}
+/*# sourceMappingURL=toDoListStyles.css.map */

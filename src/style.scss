@@ -1,5 +1,5 @@
-@import 'calculatorStyles';
-@import 'toDoListStyles';
+@import 'Calculator/calculatorStyles';
+@import 'ToDo/toDoListStyles';
 
 @mixin appButtons($first-color, $second-color, $thirth-color){
     width: clamp(170px, 9vw, 500px);

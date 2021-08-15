@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
-import { resultAction, toggleColor } from './redux/actions'
+import { resultAction, toggleColor } from '../redux/actions'
 
 function CalculatorApp({calcState}){
 
