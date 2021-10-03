@@ -1,0 +1,142 @@
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.wrapper .game {
+  display: -ms-grid;
+  display: grid;
+  margin-top: 2vh;
+  -ms-grid-columns: 500px 500px;
+      grid-template-columns: 500px 500px;
+  row-gap: 2vw;
+  -webkit-column-gap: 2vw;
+          column-gap: 2vw;
+  justify-items: center;
+}
+
+.wrapper .resetButton {
+  width: clamp(170px, 9vw, 500px);
+  background-color: #c900db;
+  border: 0.6vh outset #72007c;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  height: clamp(50px, 9vh, 250px);
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-size: clamp(18px, 2.6vh, 50px);
+}
+
+.wrapper .resetButton:hover {
+  background-color: #6a0e72;
+  border: 0.6vh inset #72007c;
+  color: white;
+}
+
+.redItem {
+  color: black;
+  text-shadow: 1px 1px 1px black;
+  text-align: center;
+  font-size: 28px;
+  background-color: #c90000;
+  border: 3px outset darkred;
+  height: clamp(40px, 3vw, 80px);
+  cursor: -webkit-grab;
+  cursor: grab;
+  margin-bottom: 0.5vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.yellowItem {
+  color: black;
+  text-shadow: 1px 1px 1px black;
+  text-align: center;
+  font-size: 28px;
+  background-color: yellow;
+  border: 3px outset #8f7500;
+  height: clamp(40px, 3vw, 80px);
+  cursor: -webkit-grab;
+  cursor: grab;
+  margin-bottom: 0.5vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.blueItem {
+  color: black;
+  text-shadow: 1px 1px 1px black;
+  text-align: center;
+  font-size: 28px;
+  background-color: #0000c4;
+  border: 3px outset darkblue;
+  height: clamp(40px, 3vw, 80px);
+  cursor: -webkit-grab;
+  cursor: grab;
+  margin-bottom: 0.5vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.greenItem {
+  color: black;
+  text-shadow: 1px 1px 1px black;
+  text-align: center;
+  font-size: 28px;
+  background-color: #005c00;
+  border: 3px outset darkgreen;
+  height: clamp(40px, 3vw, 80px);
+  cursor: -webkit-grab;
+  cursor: grab;
+  margin-bottom: 0.5vh;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.redFrame {
+  background-color: #990000;
+  border: 10px inset #720000;
+  padding: 5%;
+  width: 400px;
+  height: 400px;
+}
+
+.yellowFrame {
+  background-color: #dada34;
+  border: 10px inset #8f7500;
+  padding: 5%;
+  width: 400px;
+  height: 400px;
+}
+
+.blueFrame {
+  background-color: #3b3bcc;
+  border: 10px inset darkblue;
+  padding: 5%;
+  width: 400px;
+  height: 400px;
+}
+
+.greenFrame {
+  background-color: green;
+  border: 10px inset darkgreen;
+  padding: 5%;
+  width: 400px;
+  height: 400px;
+}
+/*# sourceMappingURL=gameStyles.css.map */

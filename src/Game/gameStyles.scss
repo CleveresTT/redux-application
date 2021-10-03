@@ -1,0 +1,83 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .game{
+        display: grid;
+        margin-top: 2vh;
+        grid-template-columns: 500px 500px;
+        row-gap: 2vw;
+        column-gap: 2vw;
+        justify-items: center;
+    }
+    .resetButton{
+        width: clamp(170px, 9vw, 500px);
+        background-color: rgb(201, 0, 219);
+        border: 0.6vh outset rgb(114, 0, 124);
+        transition: 0.2s;
+        height: clamp(50px, 9vh, 250px);
+        margin-bottom: 2vh;
+        font-size: clamp(18px, 2.6vh, 50px);
+        &:hover{
+            background-color: rgb(106, 14, 114);
+            border: 0.6vh inset rgb(114, 0, 124); 
+            color: white;
+        }
+    }
+}
+
+@mixin item($first-color, $second-color){
+    color:black;
+    text-shadow: 1px 1px 1px black;
+    text-align: center;
+    font-size: 28px;
+    background-color: $second-color;
+    border: 3px outset $first-color;
+    height: clamp(40px, 3vw, 80px);
+    cursor: grab;
+    margin-bottom: 0.5vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.redItem{
+    @include item(darkred, rgb(201, 0, 0))
+}
+
+.yellowItem{
+    @include item(rgb(143, 117, 0), rgb(255, 255, 0))
+}
+
+.blueItem{
+    @include item(darkblue, rgb(0, 0, 196))
+}
+
+.greenItem{
+    @include item(darkgreen, rgb(0, 92, 0))
+}
+
+@mixin frame($first-color, $second-color){
+    background-color: $second-color;
+    border: 10px inset $first-color;
+    padding: 5%;
+    width: 400px;
+    height: 400px;
+}
+
+.redFrame{
+    @include frame(rgb(114, 0, 0), rgb(153, 0, 0))
+}
+
+.yellowFrame{
+    @include frame(rgb(143, 117, 0), rgb(218, 218, 52))
+}
+
+.blueFrame{
+    @include frame(darkblue, rgb(59, 59, 204))
+}
+
+.greenFrame{
+    @include frame(darkgreen, green)
+}

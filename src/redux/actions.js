@@ -1,4 +1,4 @@
-import { CALC, TODO_LIST, MODAL, RESULT, COLOR } from "./types";
+import { CALC, TODO_LIST, GAME, MODAL, RESULT, COLOR } from "./types";
 
 export function toggleCalc(newState){
     return{
@@ -10,6 +10,13 @@ export function toggleCalc(newState){
 export function toggleToDo(newState){
     return{
         type: TODO_LIST,
+        payload: newState
+    }
+}
+
+export function toggleGame(newState){
+    return{
+        type: GAME,
         payload: newState
     }
 }

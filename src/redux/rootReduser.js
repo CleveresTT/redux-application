@@ -1,6 +1,6 @@
 import { combineReducers } from "redux"
 import { calculatorReduser } from "./calcReduser"
-import { CALC, MODAL, TODO_LIST } from "./types"
+import { CALC, MODAL, GAME, TODO_LIST } from "./types"
 
 function calcReduser(state='none', action){
     switch(action.type){
@@ -22,6 +22,16 @@ function listReduser(state='none', action){
     }
 }
 
+function gameReduser(state='none', action){
+    switch(action.type){
+        case GAME:{
+            state = action.payload
+            return state
+        }
+        default: return state
+    }
+}
+
 function modalReduser(state={ modalStateAttr: 'none', content: '' }, action){
     switch(action.type){
         case MODAL:{
@@ -35,6 +45,7 @@ function modalReduser(state={ modalStateAttr: 'none', content: '' }, action){
 export const rootReduser = combineReducers({
     calc: calcReduser,
     list: listReduser,
+    game: gameReduser,
     modal: modalReduser,
     result: calculatorReduser
 })

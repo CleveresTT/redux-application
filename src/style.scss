@@ -1,5 +1,6 @@
 @import 'Calculator/calculatorStyles';
 @import 'ToDo/toDoListStyles';
+@import 'Game/gameStyles';
 
 @mixin appButtons($first-color, $second-color, $thirth-color){
     width: clamp(170px, 9vw, 500px);
@@ -29,4 +30,8 @@
 
 .toDoListAppButton{
     @include appButtons(rgb(117, 96, 2), rgb(172, 121, 28), rgb(131, 95, 18))
+}
+
+.gameAppButton{
+    @include appButtons(rgb(0, 10, 151), rgb(74, 42, 255), rgb(12, 0, 184))
 }

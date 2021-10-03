@@ -2,14 +2,17 @@ import React from 'react'
 import ToDoListApp from './Todo/ToDoListApp'
 import CalculatorApp from './Calculator/CalculatorApp'
 import Modal from './Modal/Modal'
-import { toggleCalc, toggleModal, toggleToDo } from './redux/actions'
+import GameApp from './Game/Game'
+import { toggleCalc, toggleModal, toggleGame, toggleToDo } from './redux/actions'
 import { connect } from 'react-redux'
 
 class App extends React.Component {
 
     toggleCalculator = () => {
-        if(this.props.toDoListState === 'block')
+        if(this.props.toDoListState === 'block' || this.props.gameState === "flex"){
             this.props.toggleToDo('none')
+            this.props.toggleGame('none')
+        }
         if(this.props.calculatorState==='none'){
             this.props.toggleModal({modalStateAttr:"flex", content: 'Включен калькулятор'})
             setTimeout(()=>{
@@ -23,8 +26,10 @@ class App extends React.Component {
     }
 
     toggleToDoList = () => {
-        if(this.props.calculatorState === 'block')
+        if(this.props.calculatorState === 'block' || this.props.gameState === "flex"){
             this.props.toggleCalc('none')
+            this.props.toggleGame('none')
+        }
         if(this.props.toDoListState==='none'){
             this.props.toggleModal({modalStateAttr:"flex", content: 'Включен список дел'})
             setTimeout(()=>{
@@ -37,6 +42,23 @@ class App extends React.Component {
             return this.props.toggleToDo('none')
     }
 
+    toggleGame = () => {
+        if(this.props.calculatorState === 'block' || this.props.toDoListState === 'block'){
+            this.props.toggleCalc('none')
+            this.props.toggleToDo('none')
+        }
+        if(this.props.gameState==='none'){
+            this.props.toggleModal({modalStateAttr:"flex", content: 'Включена игра'})
+            setTimeout(()=>{
+                this.props.toggleGame('flex')
+                this.props.toggleModal({modalStateAttr:"none", content: ''})
+            },1000)
+            return
+        }
+        else
+            return this.props.toggleGame('none')
+    }
+
     render(){
 
     return (
@@ -46,14 +68,23 @@ class App extends React.Component {
                 <button className='calcAppButton' 
                     onClick={
                         this.toggleCalculator
-                    }>Калькулятор</button>
+                    }>Калькулятор
+                </button>
                 <button className='toDoListAppButton' 
                     onClick={
                         this.toggleToDoList
-                    }>Список дел</button></div>
-            <hr></hr>
+                    }>Список дел
+                </button>
+                <button className='gameAppButton' 
+                    onClick={
+                        this.toggleGame
+                    }>Игра
+                </button>
+            </div>
+            <hr/>
             <CalculatorApp />
             <ToDoListApp  />
+            <GameApp  />
         </div>
     )
     }
@@ -63,14 +94,16 @@ const mapStateToProps = state =>{
     return {
         calculatorState: state.calc,
         toDoListState: state.list,
-        modalState: state.modal
+        gameState: state.game,
+        modalState: state.modal,
     }
 }
 
 const mapDispatchToProps = {
     toggleCalc,
     toggleToDo,
-    toggleModal
+    toggleGame,
+    toggleModal,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
