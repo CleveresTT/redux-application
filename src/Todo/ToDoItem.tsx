@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
-import PropTypes from 'prop-types'
 import Context from '../context'
+import { IToDoItem } from './ToDoTypes'
 
 const styles={
     li:{
@@ -14,8 +14,8 @@ const styles={
     }
 }
 
-function ToDoItem({todo, index, onChange}){
-    const {removeToDo}=useContext(Context)
+const ToDoItem:React.FC<{todo:IToDoItem, index:number, onChange: (id:number)=>void}> = ({todo, index, onChange}) => {
+    const removeToDo=useContext<(id:number)=>void>(Context)
     const classes=['container']
 
     if(todo.completed){
@@ -31,12 +31,6 @@ function ToDoItem({todo, index, onChange}){
         </label>
         <button className="rm" onClick={/*()=>removeToDo(todo.id)*/ removeToDo.bind(null, todo.id)}>&times;</button>
     </li>
-}
-
-ToDoItem.propTypes={
-    todo: PropTypes.object.isRequired,
-    index: PropTypes.number,
-    OnChange: PropTypes.func.isRequired,
 }
 
 export default ToDoItem

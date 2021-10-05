@@ -6,7 +6,7 @@ import { compose, createStore } from 'redux';
 import { rootReduser } from './redux/rootReduser';
 import { Provider } from 'react-redux';
 
-const store = createStore(rootReduser, compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+const store = createStore(rootReduser, compose((window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()))
 
 ReactDOM.render(
   <Provider store={store}>

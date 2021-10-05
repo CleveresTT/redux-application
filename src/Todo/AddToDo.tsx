@@ -1,24 +1,24 @@
-import React, {useState} from 'react'
+import React, {FormEvent, useState} from 'react'
 import PropTypes from 'prop-types'
 
 function useInputValue(defaultValue=''){
-    const [value, setValue]=useState(defaultValue)
+    const [value, setValue]=useState<string>(defaultValue)
 
     return{
         bind:{
             className: 'inp',
             value,
-            onChange: event => setValue(event.target.value)
+            onChange: (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.currentTarget.value)
         },
         clear: () => setValue(''),
         value: () => value
     }
 }
 
-function AddToDo({onCreate}){
+const AddToDo:React.FC<{onCreate:(title:string)=>void}> = ({onCreate}) => {
     const input = useInputValue('')
     
-    function submitHandler(event){
+    function submitHandler(event: FormEvent){
         event.preventDefault();
 
         if (input.value().trim()){

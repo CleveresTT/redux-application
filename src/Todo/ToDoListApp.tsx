@@ -1,19 +1,21 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import ToDoList from './ToDoList'
-import Context from '../context'
 import Loader from '../Loader'
 import { connect } from 'react-redux'
+import { RootState } from '../redux/rootReduser'
+import { IToDoItem } from './ToDoTypes'
+import Context from '../context'
 
-const AddToDo = React.lazy(() => new Promise(resolve => {setTimeout(() => {resolve(import('./AddToDo'))},0)}))
+const AddToDo = React.lazy(() => import('./AddToDo'))
 
-function ToDoListApp({toDoListState}) {
+const ToDoListApp:React.FC<{toDoListState?: string}> = ({toDoListState}) => {
 
   const toDoListStyles = {
     display: toDoListState
   }
 
-  const [todos, setToDos]=React.useState([])
-  const [loading, setLoading] = React.useState(true)
+  const [todos, setToDos]=useState<Array<IToDoItem>>([])
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
@@ -26,9 +28,9 @@ function ToDoListApp({toDoListState}) {
       })
   }, [])
 
-  function toggleToDo(id){
+  function toggleToDo(id: number):void{
     setToDos(
-      todos.map(todo=>{
+      todos.map((todo: IToDoItem)=>{
       if (todo.id===id){
         todo.completed=!todo.completed;
       }
@@ -37,11 +39,11 @@ function ToDoListApp({toDoListState}) {
     )
   }
 
-  function removeToDo(id){
-    setToDos(todos.filter(todo=>todo.id!==id))
+  function removeToDo(id: number):void{
+    setToDos(todos.filter((todo: IToDoItem)=>todo.id!==id))
   }
 
-  function addToDo(title){
+  function addToDo(title: string):void{
     setToDos(todos.concat([{
       title,
       id: Date.now(),
@@ -50,7 +52,7 @@ function ToDoListApp({toDoListState}) {
   }
 
   return (
-    <Context.Provider value={{removeToDo: removeToDo}}>
+    <Context.Provider value={removeToDo}>
     <div className="wrapper" style={toDoListStyles}>
       <h1 style={{display: 'flex', justifyContent: 'center', color: 'darkred'}}>ToDo List:</h1>
       <React.Suspense fallback={<p>Loading...</p>}>
@@ -64,7 +66,7 @@ function ToDoListApp({toDoListState}) {
   );
 }
 
-const mapStateToProps = state =>{
+const mapStateToProps = (state: RootState) =>{
   return {
     toDoListState: state.list
   }

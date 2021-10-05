@@ -5,8 +5,21 @@ import Modal from './Modal/Modal'
 import GameApp from './Game/Game'
 import { toggleCalc, toggleModal, toggleGame, toggleToDo } from './redux/actions'
 import { connect } from 'react-redux'
+import { RootState } from './redux/rootReduser'
+import { IModalState, showActionType, showModalAction } from './redux/types'
 
-class App extends React.Component {
+interface AppProps{
+    calculatorState: string,
+    toDoListState: string,
+    gameState: string,
+    modalState: IModalState,
+    toggleCalc(newState:string): showActionType,
+    toggleToDo(newState:string): showActionType,
+    toggleGame(newState:string): showActionType,
+    toggleModal(newState:IModalState): showModalAction
+}
+
+class App extends React.Component<AppProps,{}> {
 
     toggleCalculator = () => {
         if(this.props.toDoListState === 'block' || this.props.gameState === "flex"){
@@ -90,7 +103,7 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = state =>{
+const mapStateToProps = (state: RootState) =>{
     return {
         calculatorState: state.calc,
         toDoListState: state.list,

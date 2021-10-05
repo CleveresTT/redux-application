@@ -1,8 +1,9 @@
 import { combineReducers } from "redux"
 import { calculatorReduser } from "./calcReduser"
-import { CALC, MODAL, GAME, TODO_LIST } from "./types"
+import { gameProgressReduser } from "./gameReduser"
+import { CALC, MODAL, GAME, TODO_LIST, showActionType, showModalAction, IModalState } from "./types"
 
-function calcReduser(state='none', action){
+function calcReduser(state='none', action: showActionType): string{
     switch(action.type){
         case CALC:{
             state = action.payload
@@ -12,7 +13,7 @@ function calcReduser(state='none', action){
     }
 }
 
-function listReduser(state='none', action){
+function listReduser(state='none', action: showActionType): string{
     switch(action.type){
         case TODO_LIST:{
             state = action.payload
@@ -22,7 +23,7 @@ function listReduser(state='none', action){
     }
 }
 
-function gameReduser(state='none', action){
+function gameReduser(state='none', action: showActionType): string{
     switch(action.type){
         case GAME:{
             state = action.payload
@@ -32,7 +33,7 @@ function gameReduser(state='none', action){
     }
 }
 
-function modalReduser(state={ modalStateAttr: 'none', content: '' }, action){
+function modalReduser(state={ modalStateAttr: 'none', content: '' }, action: showModalAction): IModalState{
     switch(action.type){
         case MODAL:{
             state = action.payload
@@ -47,5 +48,8 @@ export const rootReduser = combineReducers({
     list: listReduser,
     game: gameReduser,
     modal: modalReduser,
-    result: calculatorReduser
+    result: calculatorReduser,
+    gameProgress: gameProgressReduser
 })
+
+export type RootState = ReturnType<typeof rootReduser> 

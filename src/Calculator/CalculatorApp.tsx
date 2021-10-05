@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { resultAction, toggleColor } from '../redux/actions'
+import { RootState } from '../redux/rootReduser'
 
-function CalculatorApp({calcState}){
+const CalculatorApp:React.FC<{calcState?: string}> = ({calcState}) => {
 
     const calcStyles = {
         display: calcState
     }
 
-    const result = useSelector(state => state.result.result)
-    const colored = useSelector(state => state.result.color)
+    const result = useSelector((state: RootState) => state.result.result)
+    const colored = useSelector((state: RootState) => state.result.color)
     const dispatch = useDispatch()
 
     function useInputValue(defaultValue=''){
@@ -29,24 +30,27 @@ function CalculatorApp({calcState}){
                 className: 'in',
                 id: 'in',
                 value,
-                onChange: event => { 
-                    if (event.nativeEvent.data>=0 || 
-                        event.nativeEvent.data<=9 || 
-                        event.nativeEvent.data==='.' || 
-                        event.nativeEvent.data==='+' || 
-                        event.nativeEvent.data==='*' || 
-                        event.nativeEvent.data==='-' || 
-                        event.nativeEvent.data==='/' || 
-                        event.nativeEvent.data==='=' || 
-                        event.nativeEvent.inputType==='deleteContentBackward')
-                           setValue(event.target.value)
-                    else {}
+                onChange: (event: React.ChangeEvent<HTMLInputElement>):void => { 
+                    if ((event.nativeEvent as any).data>=0 || 
+                        (event.nativeEvent as any).data<=9 || 
+                        (event.nativeEvent as any).data==='.' || 
+                        (event.nativeEvent as any).data==='+' || 
+                        (event.nativeEvent as any).data==='*' || 
+                        (event.nativeEvent as any).data==='-' || 
+                        (event.nativeEvent as any).data==='/' || 
+                        (event.nativeEvent as any).inputType==="deleteContentBackward")
+                           setValue(event.currentTarget.value)
+                    else {
+                        if((event.nativeEvent as any).data==='='){
+                            calc("=")
+                        }
+                    }
                 }
             },
-            clear: () => setValue(''),
-            backspace: () => {setValue(value.substring(0, value.length - 1))},
-            value: () => value,
-            addChar: (char) => {setValue(value+char)},
+            clear: ():void => setValue(''),
+            backspace: ():void => {setValue(value.substring(0, value.length - 1))},
+            value: ():string => value,
+            addChar: (char:string):void => {setValue(value+char)},
         }
     }
 
@@ -56,7 +60,7 @@ function CalculatorApp({calcState}){
         if ((event.key).match(/Enter/)) calc(event.key);
     });
 
-    function calc(value) {
+    function calc(value:string):void {
         if(!value)
             dispatch(resultAction(''))
         if (value.match(/=|Enter/)) {
@@ -75,10 +79,10 @@ function CalculatorApp({calcState}){
         }
     }
 
-    const buttonOptions = value => {
+    const buttonOptions:any = (value:string) => {
         return{
             onClick: () => calc(value),
-            onMouseDown: e => e.preventDefault()
+            onMouseDown: (e: MouseEvent) => e.preventDefault()
         }
     }
 
@@ -99,7 +103,7 @@ function CalculatorApp({calcState}){
     )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: RootState) => {
     return{
         calcState: state.calc
     }
